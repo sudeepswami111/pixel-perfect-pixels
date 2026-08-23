@@ -14,7 +14,118 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      battles: {
+        Row: {
+          created_at: string
+          featured_on: string | null
+          id: string
+          prompt: string
+          sort_order: number
+        }
+        Insert: {
+          created_at?: string
+          featured_on?: string | null
+          id?: string
+          prompt: string
+          sort_order?: number
+        }
+        Update: {
+          created_at?: string
+          featured_on?: string | null
+          id?: string
+          prompt?: string
+          sort_order?: number
+        }
+        Relationships: []
+      }
+      coin_spends: {
+        Row: {
+          created_at: string
+          id: string
+          spend_date: string
+          user_id: string
+          vote_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          spend_date?: string
+          user_id: string
+          vote_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          spend_date?: string
+          user_id?: string
+          vote_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "coin_spends_vote_id_fkey"
+            columns: ["vote_id"]
+            isOneToOne: false
+            referencedRelation: "votes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          display_name: string
+          id: string
+        }
+        Insert: {
+          created_at?: string
+          display_name?: string
+          id: string
+        }
+        Update: {
+          created_at?: string
+          display_name?: string
+          id?: string
+        }
+        Relationships: []
+      }
+      votes: {
+        Row: {
+          argument: string
+          author_label: string | null
+          battle_id: string
+          created_at: string
+          id: string
+          side: string
+          user_id: string | null
+        }
+        Insert: {
+          argument: string
+          author_label?: string | null
+          battle_id: string
+          created_at?: string
+          id?: string
+          side: string
+          user_id?: string | null
+        }
+        Update: {
+          argument?: string
+          author_label?: string | null
+          battle_id?: string
+          created_at?: string
+          id?: string
+          side?: string
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "votes_battle_id_fkey"
+            columns: ["battle_id"]
+            isOneToOne: false
+            referencedRelation: "battles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
