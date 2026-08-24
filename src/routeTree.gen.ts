@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BattleRouteImport } from './routes/battle'
+import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as WalletRouteImport } from './routes/wallet'
 
 const IndexRoute = IndexRouteImport.update({
@@ -23,6 +24,11 @@ const BattleRoute = BattleRouteImport.update({
   path: '/battle',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const WalletRoute = WalletRouteImport.update({
   id: '/wallet',
   path: '/wallet',
@@ -32,30 +38,34 @@ const WalletRoute = WalletRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/battle': typeof BattleRoute
+  '/profile': typeof ProfileRoute
   '/wallet': typeof WalletRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/battle': typeof BattleRoute
+  '/profile': typeof ProfileRoute
   '/wallet': typeof WalletRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/battle': typeof BattleRoute
+  '/profile': typeof ProfileRoute
   '/wallet': typeof WalletRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/battle' | '/wallet'
+  fullPaths: '/' | '/battle' | '/profile' | '/wallet'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/battle' | '/wallet'
-  id: '__root__' | '/' | '/battle' | '/wallet'
+  to: '/' | '/battle' | '/profile' | '/wallet'
+  id: '__root__' | '/' | '/battle' | '/profile' | '/wallet'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BattleRoute: typeof BattleRoute
+  ProfileRoute: typeof ProfileRoute
   WalletRoute: typeof WalletRoute
 }
 
@@ -75,6 +85,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BattleRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/wallet': {
       id: '/wallet'
       path: '/wallet'
@@ -88,6 +105,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BattleRoute: BattleRoute,
+  ProfileRoute: ProfileRoute,
   WalletRoute: WalletRoute,
 }
 export const routeTree = rootRouteImport
