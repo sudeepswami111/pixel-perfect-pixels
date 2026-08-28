@@ -69,9 +69,9 @@ export function CoinPips({ left, total }: { left: number; total: number }) {
   );
 }
 
-export function Eyebrow({ children }: { children: React.ReactNode }) {
+export function Eyebrow({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
-    <p className="font-mono text-[0.65rem] uppercase tracking-[0.28em] text-muted-foreground">
+    <p className={cn("font-mono text-[0.65rem] uppercase tracking-[0.28em] text-muted-foreground", className)}>
       {children}
     </p>
   );
