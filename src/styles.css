@@ -4,32 +4,10 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/*
- * Design system definition.
- *
- * The @theme inline block maps CSS custom properties to Tailwind utility
- * classes (e.g. --color-primary -> bg-primary, text-primary).
- *
- * The :root and .dark blocks define the actual color values using oklch.
- * All colors MUST use oklch format.
- *
- * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
- * 2. Register it in @theme inline as --color-<name>: var(--<name>)
- */
-
 @theme inline {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --font-sans: "Cabin", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Abril Fatface", "Iowan Old Style", Georgia, serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
-  --color-day: var(--day-accent);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --radius-2xl: calc(var(--radius) + 8px);
-  --radius-3xl: calc(var(--radius) + 12px);
-  --radius-4xl: calc(var(--radius) + 16px);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -44,64 +22,45 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-gold-bright: var(--gold-bright);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-ring-offset-background: var(--background);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+  --radius-xl: 10px;
+  --radius-2xl: 14px;
 }
 
 :root,
 .dark {
-  --radius: 0.25rem;
-  --day-accent: oklch(0.78 0.17 78);
-  --day-accent-soft: oklch(0.78 0.17 78 / 18%);
-  --background: oklch(0.16 0.008 265);
-  --foreground: oklch(0.96 0.004 260);
-  --card: oklch(0.2 0.009 265);
-  --card-foreground: oklch(0.96 0.004 260);
-  --popover: oklch(0.2 0.009 265);
-  --popover-foreground: oklch(0.96 0.004 260);
-  --primary: var(--day-accent);
-  --primary-foreground: oklch(0.16 0.008 265);
-  --secondary: oklch(0.23 0.009 265);
-  --secondary-foreground: oklch(0.96 0.004 260);
-  --muted: oklch(0.25 0.009 265);
-  --muted-foreground: oklch(0.68 0.012 260);
-  --accent: oklch(0.25 0.009 265);
-  --accent-foreground: oklch(0.96 0.004 260);
-  --destructive: oklch(0.62 0.2 22);
-  --destructive-foreground: oklch(0.98 0.003 260);
-  --border: oklch(1 0 0 / 12%);
-  --input: oklch(1 0 0 / 14%);
-  --ring: var(--day-accent);
-  --chart-1: var(--day-accent);
-  --chart-2: oklch(0.7 0.13 200);
-  --chart-3: oklch(0.72 0.15 330);
-  --chart-4: oklch(0.75 0.16 140);
-  --chart-5: oklch(0.7 0.16 30);
-  --sidebar: oklch(0.18 0.008 265);
-  --sidebar-foreground: oklch(0.96 0.004 260);
-  --sidebar-primary: var(--day-accent);
-  --sidebar-primary-foreground: oklch(0.16 0.008 265);
-  --sidebar-accent: oklch(0.25 0.009 265);
-  --sidebar-accent-foreground: oklch(0.96 0.004 260);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: var(--day-accent);
+  --gold: #c9a84c;
+  --gold-soft: rgba(201, 168, 76, 0.14);
+  --gold-bright: #f0d78c;
+  --background: #0d0d0d;
+  --foreground: #f4ecd8;
+  --card: #161616;
+  --card-foreground: #f4ecd8;
+  --popover: #161616;
+  --popover-foreground: #f4ecd8;
+  --primary: #c9a84c;
+  --primary-foreground: #0d0d0d;
+  --secondary: #1a1a1a;
+  --secondary-foreground: #f4ecd8;
+  --muted: #1f1f1f;
+  --muted-foreground: #9a8f74;
+  --accent: #1a1a1a;
+  --accent-foreground: #f4ecd8;
+  --destructive: #e85d3a;
+  --destructive-foreground: #0d0d0d;
+  --border: rgba(201, 168, 76, 0.16);
+  --input: rgba(201, 168, 76, 0.22);
+  --ring: #c9a84c;
 }
 
 @layer base {
@@ -111,6 +70,7 @@
 
   html {
     color-scheme: dark;
+    scroll-behavior: smooth;
   }
 
   body {
@@ -122,14 +82,36 @@
   }
 
   ::selection {
-    background: var(--day-accent);
+    background: var(--gold);
     color: var(--background);
+  }
+
+  /* subtle film grain so the black never reads flat */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 }
 
 @utility font-display {
   font-family: var(--font-display);
-  font-optical-sizing: auto;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
 }
 
+@utility text-gold {
+  color: var(--gold);
+}
+
+@utility bg-gold {
+  background-color: var(--gold);
+}
+
+/* thin gold hairline that fades in from the left on reveal */
+@utility hairline {
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
